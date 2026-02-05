@@ -1,3 +1,8 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
 .players_area {
     width: 100vw;
     height: 100vh;
@@ -7,18 +12,80 @@
 
 .player_area {
     width: 50%;
+    height: 100%;
     background-color: aqua;
     display: flex;
     flex-direction: column;
     place-items: center;
+
 }
 
 .dice_throwing_area {
+    /* place-self:  stretch; */
     display: flex;
     position: absolute;
     flex-direction: column;
-    place-items: CENTER;
+    place-items: center;
     width: 100vw;
     height: 100vh;
-    z-index: 1;
+    /* gap: 1rem; */
+    /* z-index: 1; */
+}
+
+.dice_throwing_area>p {
+    border-radius: 10px;
+    background-color: rgb(1, 1, 1, 0.2);
+    padding: 1rem;
+    font-size: 1.8rem;
+}
+
+.turn_status {
+        border-radius: 10px;
+    background-color: rgb(1, 1, 1, 0.2);
+    padding: 1rem;
+    font-size: 1.8rem;
+    justify-self:  end;
+    width: 8rem;
+    height: 6rem;
+    justify-content: center;
+}
+
+.dice {
+    border-radius: 10px;
+    width: 8rem;
+    height: 8rem;
+    margin-bottom: 2rem;
+    background-size: cover;
+
+    background-color: white;
+
+}
+
+.new_game_button {
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(18, 37, 130);
+    padding: 0.1rem 3.5rem;
+    font-size: 0.7rem;
+    margin-bottom: 2rem;
+
+}
+
+.buttons {
+    border-radius: 10px;
+    background-color: rgb(1, 1, 1, 0.2);
+    font-size: 0.7rem;
+    width: 9rem;
+    margin-bottom: 1rem;
+
+
+    /* padding: 0.1rem 3.5rem; */
+}
+
+.header_player_area {
+    font-size: 3rem;
+}
+
+.sum_score {
+    font-size: 12rem;
 }

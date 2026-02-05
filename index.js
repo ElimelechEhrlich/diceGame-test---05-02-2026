@@ -1,4 +1,5 @@
 function roll_dice() {
+    const dices_sides = ['1', '2', '3', '4', '5', '6']
     const dice1 = Math.floor((Math.random()) * 6) + 1
     const dice2 = Math.floor((Math.random()) * 6) + 1
     return [dice1, dice2]
@@ -20,8 +21,11 @@ function turn() {
         const corrent_score = document.querySelector(`.corrent_score${corrent_player.player_number}`)
         console.log(corrent_player);
         if (corrent_player.corrent_turn) {
-            if (corrent_player.score < 100) {
+            if (!players.find((player) => player.score >= 100)) {
                 const dices_results = roll_dice()
+                const dices = document.querySelectorAll('.dice')
+                dices[0].style.backgroundImage = `url("/images/dice-${dices_results[0]}.png")`
+                dices[1].style.backgroundImage = `url("/images/dice-${dices_results[1]}.png")`
                 if (dices_results[0] !== dices_results[1]) {
                     const sum = dices_results[0] + dices_results[1]
                     console.log(sum);
@@ -29,10 +33,13 @@ function turn() {
                     corrent_score.textContent = Number(corrent_score.textContent) + sum
                     // corrent_player.score += Number(corrent_score.textContent)
                 } else {
-                    corrent_score.textContent = 0
-                    switch_player(corrent_player)
+                    if (corrent_player.score < 100) {
+                        corrent_score.textContent = 0
+                        switch_player(corrent_player)
+                    }
                 }
             }
+
         }
     })
     const hold_button = document.querySelector('.hold_button')
@@ -49,8 +56,12 @@ function turn() {
         switch_player(corrent_player)
         console.log(corrent_score);
 
-        // turn(corrent_player)
 
+
+    })
+    const new_game_button = document.querySelector('.new_game_button')
+    new_game_button.addEventListener('click', e => {
+        window.location.reload()
     })
 }
 
