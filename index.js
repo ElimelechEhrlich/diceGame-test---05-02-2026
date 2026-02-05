@@ -33,36 +33,41 @@ function turn() {
                     corrent_score.textContent = Number(corrent_score.textContent) + sum
                     // corrent_player.score += Number(corrent_score.textContent)
                 } else {
-                    if (corrent_player.score < 100) {
-                        corrent_score.textContent = 0
-                        switch_player(corrent_player)
-                    }
+                    corrent_score.textContent = 0
+                    switch_player(corrent_player)
                 }
+            } else {
+                if (corrent_player.score >= 100) {
+                    const winn = document.createElement('p')
+                    winn.textContent = `${corrent_player} is the winner!!`
+                }
+
             }
-
         }
+
+    
     })
-    const hold_button = document.querySelector('.hold_button')
-    hold_button.addEventListener('click', (e) => {
-        e.preventDefault()
-        const corrent_player = players.find((player) => player.corrent_turn)
-        const corrent_score = document.querySelector(`.corrent_score${corrent_player.player_number}`)
-        corrent_player.score += Number(corrent_score.textContent)
-        console.log(corrent_player);
-        const sum_score = document.querySelector(`.sum_score${corrent_player.player_number}`)
-        sum_score.textContent = Number(sum_score.textContent) + Number(corrent_score.textContent)
-        corrent_score.textContent = '0'
-        console.log(corrent_score);
-        switch_player(corrent_player)
-        console.log(corrent_score);
+const hold_button = document.querySelector('.hold_button')
+hold_button.addEventListener('click', (e) => {
+    e.preventDefault()
+    const corrent_player = players.find((player) => player.corrent_turn)
+    const corrent_score = document.querySelector(`.corrent_score${corrent_player.player_number}`)
+    corrent_player.score += Number(corrent_score.textContent)
+    console.log(corrent_player);
+    const sum_score = document.querySelector(`.sum_score${corrent_player.player_number}`)
+    sum_score.textContent = Number(sum_score.textContent) + Number(corrent_score.textContent)
+    corrent_score.textContent = '0'
+    console.log(corrent_score);
+    switch_player(corrent_player)
+    console.log(corrent_score);
 
 
 
-    })
-    const new_game_button = document.querySelector('.new_game_button')
-    new_game_button.addEventListener('click', e => {
-        window.location.reload()
-    })
+})
+const new_game_button = document.querySelector('.new_game_button')
+new_game_button.addEventListener('click', e => {
+    window.location.reload()
+})
 }
 
 
